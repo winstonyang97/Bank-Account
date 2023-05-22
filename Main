@@ -1,0 +1,1700 @@
+#***********************************************************
+# titre du programme: Projet Banque
+# création: 05 Mai
+# par winston yang
+# version 1.0
+# ce programme te simule un compte banquaire
+#***********************************************************
+
+import os
+
+#argent = 0
+
+argent_depose_c = 0
+
+argent_depose_e = 0
+
+argent_retire_c = 0
+
+résultat_us = 0
+
+résultat_euro = 0
+
+résultat_pound = 0
+
+résultat_australie = 0
+
+résultat_franc = 0
+
+résultat_us2 = 0
+
+résultat_euro2 = 0
+
+résultat_pound2 = 0
+
+résultat_australie2 = 0
+
+résultat_franc2 = 0
+
+retirer = 0
+
+nip = 1111
+
+i = 0.03
+
+def canada_us(canada):
+    return canada * 0.75
+
+def us_canada(us):
+    return us * 1.34
+    
+def canada_euro(canada):
+    return canada * 0.68
+
+def euro_canada(euro):
+    return euro * 1.47
+    
+def canada_pound(canada):
+    return canada * 0.59
+    
+def pound_canada(pound):
+    return pound * 1.69
+
+def canada_australie(canada):
+    return canada * 1.11
+    
+def australie_canada(australie):
+    return australie * 0.91
+    
+def canada_franc(canada):
+    return canada * 0.67
+    
+def franc_canada(franc):
+    return franc * 1.50
+
+
+print("Bienvenue, entrez votre nom et votre Nip")
+print("\n")
+nom = input("Entrez votre nom: ")
+#nip = int(input("Entrez votre Nip qui voud avez été fourni par la banque: "))
+
+
+while True:
+    try:
+        
+        nip = int(input("Entrez votre Nip qui voud avez été fourni par la banque: "))
+        if nip == 1111:
+            break
+                
+    
+        if not nip == 1111:
+            print("Votre Nip est incorrect, veuillez essayer de nouveau ou votre la banque pour de l'aide.")
+            
+    
+    except:
+        ValueError
+        print("Erreur, entrez seulement des nombres entiers")
+        True        
+    
+    
+while True:
+    try:
+        if nip == 1111:
+            print("\n")
+            print("Mot de passe accepté")
+            print("\n")
+            print("Veuillez créer une nouveau mot de passe")
+            mot_de_passe = input("Insérer nouveau mot de passe (tout caractère est permis): ")
+            os.system("clear")
+            break
+    except:
+        ValueError
+        print("Erreur, entrez seulement des nombres entiers")
+        True        
+            
+
+while True:
+    try:
+        
+    
+            
+        reconfirm = input("Veuillez vérifier votre mot de passe: ")
+        if reconfirm == mot_de_passe:
+            os.system("clear")
+            break
+            
+        
+        
+        
+        if not reconfirm == mot_de_passe:
+            print("Mot de passe incorrect, veuillez essayer de nouveau")
+            True
+            
+        
+    except:
+        ValueError
+        print("Erreur, entrez seulement des nombres entiers")
+        True    
+        
+        
+#**************************************************************************
+# Voici le code pour le menu principale
+
+#choix_banque ="o"    
+        
+    
+while True:
+    
+    try:
+        print("Vous êtes maintenant dans le compte banquaire de",nom)
+        print("Bonjour",nom,"comment-allez vous?")
+        print (1*"\n")
+        print("DANS CETTE COMPTE VEUILLEZ SEULEMENT ENTREZ DES NOMBRES ENTIERS SANS SIGNES")
+        print (1*"\n")
+        print("Que voulez vous faire aujourd'hui? : \n\n")
+        print("    1-Acceder compte chèque")
+        print("    2-Acceder compte épargne")
+        print("    3-Echanger de la monnaie")
+        print("    4-Transferer de l'argent")
+        print("    5-Quitter")
+        
+        choix_banque = int(input("Entrer votre choix: "))
+        print("Vous avez choisi le numéro: ",choix_banque)
+        #break
+    
+        if choix_banque > 5 or choix_banque < 1:
+            os.system("clear")
+            print ("Ce choix est incompatible")
+
+                
+        if choix_banque == 5:
+            print("Vous avez choisi de quitter, Au revoir")
+            break
+    
+    except:
+        ValueError
+        print("entrez une chiffre seulement")
+        
+#*******************************************************
+# Voici le code pour le compte chèque
+        
+
+    if(choix_banque == 1):
+        try:
+            os.system("clear")
+            print("Vous avez choisi le compte chèque de",nom)
+            print (1*"\n")
+            print("Votre solde actuel est de: ",argent_depose_c,"$")
+            print("Que voulez vous faire aujourd'hui? : \n\n")
+            print("    1-Déposer de l'argent")
+            print("    2-Retirer de l'argent")
+            print("    3-Quitter")
+            
+            choix_cheque = int(input("Entrer votre choix: "))
+            print("Vous avez choisi le numéro: ",choix_cheque)
+    
+            if choix_cheque > 3 or choix_cheque < 1:
+                os.system("clear")
+                print ("Ce choix est incompatible")
+    
+        
+            if choix_cheque == 3:
+                print("Vous avez choisi de quitter, Au revoir")
+                break
+        except:
+            ValueError
+            print("Erreur, entrez seulement des nombres entiers")
+            True
+            
+#*******************************************************
+# Voici le code pour déposer l'argent             
+                
+        if(choix_cheque == 1):
+            try:
+                
+                deposer = float(input("Combien de dollars veut tu deposer? "))
+                if deposer > 0:
+                    argent_depose_c = argent_depose_c + deposer
+                else:
+                    print("Impossible de déposer une somme négative")
+                print("Vos modifications ont été enregistrées")    
+                again = input("Voudrais-tu recommencer? o/n")
+                if again == "o":
+                    os.system("clear")
+                    True
+                    
+                if again == "n":
+                    print ("Au revoir, bonne journée")
+                    break
+                
+                
+                
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True    
+    
+#*******************************************************
+# Voici le code pour retirer l'argent     
+    
+        
+        elif(choix_cheque == 2):
+            try:
+                
+                retirer = float(input("Combien de dollars veut tu retirer? "))
+                argent_retire_c = argent_depose_c - retirer
+                if argent_retire_c > 0:
+                    argent_depose_c = argent_retire_c
+                else:
+                    print("Impossible de retirer une somme plus grand que ton balance")
+                print("Vos modifications ont été enregistrées")    
+                again = input("Voudrais-tu recommencer? o/n")
+                if again == "o":
+                    os.system("clear")
+                    True
+                if again == "n":
+                    print ("Au revoir, bonne journée")
+                    break   
+               
+                        
+
+        
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+                
+                
+# Voila la fin du code pour le compte cheque
+#*******************************************************
+# Voici le code pour le compte épargne        
+
+        
+    if(choix_banque == 2):
+        try:
+            os.system("clear")
+            print("Vous avez choisi le compte épargne de",nom)
+            print (1*"\n")
+            print("Votre solde actuel est de: ",argent_depose_e,"$")
+            print("Que voulez vous faire aujourd'hui? : \n\n")
+            print("    1-Choisir intéret simple")
+            print("    2-Choisir intéret composé")
+            print("    3-Quitter")
+            
+            choix_epargne = int(input("Entrer votre choix: "))
+            print("Vous avez choisi le numéro: ",choix_epargne)
+    
+            if choix_epargne > 3 or choix_epargne < 1:
+                os.system("clear")
+                print ("Ce choix est incompatible")
+
+        
+            if choix_epargne == 3:
+                print("Vous avez choisi de quitter, Au revoir")
+                break
+        except:
+            ValueError
+            os.system("clear")
+            print("Erreur, entrez seulement des nombres entiers")
+            True
+            
+#*******************************************************
+# Voici le code pour l'intéret simple
+
+        if(choix_epargne == 1):
+            try:
+                print (1*"\n")
+                print("    1-Déposer de l'argent")
+                print("    2-Retirer de l'argent")
+                print("    3-Quitter")
+                
+                choix_deposer = int(input("Entrer votre choix: "))
+                print("Vous avez choisi le numéro: ",choix_deposer)
+    
+                if choix_deposer > 3 or choix_deposer < 1:
+                    os.system("clear")
+                    print ("Ce choix est incompatible")
+
+        
+                if choix_deposer == 3:
+                    print("Vous avez choisi de quitter, Au revoir")
+                    break
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+                
+
+            
+            if(choix_deposer == 1):
+                try:
+                    capital = float(input("Entre l'argent que tu veut déposer: "))
+                    if capital > 0:
+                        montant_final_s = (capital) * (i) + (capital)
+                        print("Après 1 an, tu aurais",round(montant_final_s,2),"$")
+                        argent_depose_e = argent_depose_e + montant_final_s
+                    else:
+                        print("Impossible de déposer une somme négative")
+                        
+                        
+                    print("Vos modifications ont été enregistrées")
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                    
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+            elif(choix_deposer == 2):
+                try:
+                    
+                    capital_retire = float(input("Combien de dollars veut tu retirer? "))
+                    simple_retire = argent_depose_e - capital_retire
+                    if simple_retire > 0:
+                        argent_depose_e = simple_retire
+                    else:
+                        print("Impossible de retirer une somme plus grand que ton balance")
+                    print("Vos modifications ont été enregistrées")    
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                    
+                    
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True    
+                
+#*******************************************************
+# Voici le code pour l'intéret composé   
+
+        elif(choix_epargne == 2):
+            try:
+                print (1*"\n")
+                print("    1-Déposer de l'argent")
+                print("    2-Retirer de l'argent")
+                print("    3-Quitter")
+                
+                choix_deposer_c = int(input("Entrer votre choix: "))
+                print("Vous avez choisi le numéro: ",choix_deposer_c)
+    
+                if choix_deposer_c > 3 or choix_deposer_c < 1:
+                    os.system("clear")
+                    print ("Ce choix est incompatible")
+
+        
+                if choix_deposer_c == 3:
+                    print("Vous avez choisi de quitter, Au revoir")
+                    break
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+            
+            if(choix_deposer_c == 1):
+
+                try:
+                    capital = float(input("Entre l'argent que tu veut déposer: "))
+                    if capital > 0:
+                        année = int(input("Combien d'années veut tu investir?: "))
+                        montant_final_c = ((1 + i) ** année) * capital
+                        print("Après",année,"an, tu aurais",round(montant_final_c,2),"$")
+                        argent_depose_e = argent_depose_e + montant_final_c
+                    else:
+                        print("Impossible de déposer une somme négative")
+                        
+                        
+                    print("Vos modifications ont été enregistrées")
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+            elif(choix_deposer_c == 2):
+                try:
+                    
+                    retire_c = float(input("Combien de dollars veut tu retirer? "))
+                    composé_retire = argent_depose_e - retire_c
+                    if composé_retire > 0:
+                        argent_depose_e = composé_retire
+                    else:
+                        print("Impossible de retirer une somme plus grand que ton balance")
+                    print("Vos modifications ont été enregistrées")    
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                    
+                    
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+    
+# Voila la fin du code pour le compte épargne
+#*******************************************************
+# Voici le code pour échanger de l'argent
+
+    elif(choix_banque == 3):
+        
+        
+        try:
+            os.system("clear")
+            print("Bonjour",nom,"vous avez choisi de faire l'échange de monnaie")
+            print (1*"\n")
+            print("Que voulez vous faire aujourd'hui? : \n\n")
+            print("    1-Échanger dans ton compte chèque")
+            print("    2-Échanger dans ton compte épargne")
+            print("    3-Quitter")
+            
+            
+            choix_converti = int(input("Entrer votre choix: "))
+            print("Vous avez choisi le numéro: ",choix_converti)
+    
+            if choix_converti > 3 or choix_converti < 1:
+                os.system("clear")
+                print ("Ce choix est incompatible")
+
+        
+            if choix_converti == 3:
+                print("Vous avez choisi de quitter, Au revoir")
+                break
+        except:
+            ValueError
+            os.system("clear")
+            print("Erreur, entrez seulement des nombres entiers")
+            True
+            
+#*********************************************************************
+# Voici le code pour échanger la monnaie dans ton compte chèque
+            
+        if(choix_converti == 1):
+            
+            try:
+                os.system("clear")
+                print("Bonjour",nom,"vous avez choisi de faire l'échange de monnaie")
+                print (1*"\n")
+                print("Vous avez",round(argent_depose_c,2),"$ CAD")
+                print("Vous avez",round(résultat_us,2),"$ USD")
+                print("Vous avez",round(résultat_euro,2),"Euros")
+                print("Vous avez",round(résultat_pound,2),"Pound Sterling")
+                print("Vous avez",round(résultat_australie,2),"$ Australien")
+                print("Vous avez",round(résultat_franc,2),"Francs")
+                print (1*"\n")
+                print("Que voulez vous faire aujourd'hui? : \n\n")
+                print("    1-Convertir CAD")
+                print("    2-Convertir USD")
+                print("    3-Convertir Euro")
+                print("    4-Convertir Pound Sterling")
+                print("    5-Convertir Dollar Australien")
+                print("    6-Convertir Swiss Franc")
+                print("    7-Quitter")
+                
+                
+                
+                choix_monnaie = int(input("Entrer votre choix: "))
+                print("Vous avez choisi le numéro: ",choix_monnaie)
+        
+                if choix_monnaie > 7 or choix_monnaie < 1:
+                    os.system("clear")
+                    print ("Ce choix est incompatible")
+
+            
+                if choix_monnaie == 7:
+                    print("Vous avez choisi de quitter, Au revoir")
+                    break
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+
+#*********************************************************************************
+# Voici le code pour échanger de CAD aux autres pays
+                
+            if(choix_monnaie == 1):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en USD")
+                    print("    2-Convertir en Euro")
+                    print("    3-Convertir en Pound Sterling")
+                    print("    4-Convertir en Dollar Australien")
+                    print("    5-Convertir en Swiss Franc")
+                    print("    6-Quitter")
+                    
+                    
+                    choix_CAD = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_CAD)
+            
+                    if choix_CAD > 6 or choix_CAD < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_CAD == 6:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                
+                if(choix_CAD == 1):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_c = argent_depose_c - canada
+                        if argent_retire_c > 0:
+                            argent_depose_c = argent_retire_c
+                            résultat_us = canada_us(canada)
+                            print("Vous avez maintenant",résultat_us,"$ USD")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+                elif(choix_CAD == 2):
+                    try:
+                        
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_c = argent_depose_c - canada
+                        if argent_retire_c > 0:
+                            argent_depose_c = argent_retire_c
+                            résultat_euro = canada_euro(canada)
+                            print("Vous avez maintenant",résultat_euro,"euros")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True      
+                        
+                
+                elif(choix_CAD == 3):
+                    try:
+                        
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_c = argent_depose_c - canada
+                        if argent_retire_c > 0:
+                            argent_depose_c = argent_retire_c
+                            résultat_pound = canada_pound(canada)
+                            print("Vous avez maintenant",résultat_pound,"pound sterling")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+                        
+                elif(choix_CAD == 4):
+                    try:
+                        
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_c = argent_depose_c - canada
+                        if argent_retire_c > 0:
+                            argent_depose_c = argent_retire_c
+                            résultat_australie = canada_australie(canada)
+                            print("Vous avez maintenant",résultat_australie,"$ australien")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True     
+                        
+                        
+                
+                elif(choix_CAD == 5):
+                    try:
+                        
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_c = argent_depose_c - canada
+                        if argent_retire_c > 0:
+                            argent_depose_c = argent_retire_c
+                            résultat_franc = canada_franc(canada)
+                            print("Vous avez maintenant",résultat_franc,"francs")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+    
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True  
+            
+# #********************************************************************************************
+# # Voici le code pour échanger des autres pays en CAD
+                        
+            elif(choix_monnaie == 2):
+                try:
+                    os.system("clear")
+                    print("Vous avez",résultat_us,"$ USD")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+                    
+                    
+                    choix_US = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_US)
+            
+                    if choix_US > 2 or choix_US < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_US == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_US == 1):
+                    try:
+                        us = float(input("Combien de dollars USD veut tu échanger en dollars CAD?: "))
+                        canada_to_US = résultat_us - us
+                        if us > résultat_us:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        if canada_to_US > 0:
+                            résultat_USAtoCAD = us_canada(us)
+                            argent_depose_c = argent_depose_c + résultat_USAtoCAD
+                            résultat_us = résultat_us - us
+                        
+                    
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+            
+            
+            elif(choix_monnaie == 3):
+                try:
+                    os.system("clear")
+                    print("Vous avez",résultat_euro,"Euros")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+                    
+                    
+                    choix_Euro = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_Euro)
+            
+                    if choix_Euro > 2 or choix_Euro < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_Euro == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_Euro == 1):
+                    try:
+                        euro = float(input("Combien de euros veut tu échanger en dollars CAD?: "))
+                        canada_to_euro = résultat_euro - euro
+                        if canada_to_euro > 0:
+                            résultat_eurotoCAD = euro_canada(euro)
+                            argent_depose_c = argent_depose_c + résultat_eurotoCAD
+                            résultat_euro = résultat_euro - euro
+                        elif euro > résultat_euro:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                    
+
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+            elif(choix_monnaie == 4):
+                try:
+                    os.system("clear")
+                    print("Vous avez",résultat_pound,"Pound Sterling")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+                    
+                    
+                    choix_pound = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_pound)
+            
+                    if choix_pound > 2 or choix_pound < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_pound == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True    
+                    
+                if(choix_pound == 1):
+                    try:
+                        pound = float(input("Combien de Pound Sterling veut tu échanger en dollars CAD?: "))
+                        canada_to_pound = résultat_pound - pound
+                        if canada_to_pound > 0:
+                            résultat_poundtoCAD = pound_canada(pound)
+                            argent_depose_c = argent_depose_c + résultat_poundtoCAD
+                            résultat_pound = résultat_pound - pound
+                        elif pound > résultat_pound:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                      
+
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+ 
+            elif(choix_monnaie == 5):
+                try:
+                    os.system("clear")
+                    print("Vous avez",résultat_australie,"$ Australien")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+                    
+                    
+                    choix_austra = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_austra)
+            
+                    if choix_austra > 2 or choix_austra < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_austra == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True    
+                    
+                if(choix_austra == 1):
+                    try:
+                        australie = float(input("Combien de Dollars Australien veut tu échanger en dollars CAD?: "))
+                        canada_to_australie = résultat_australie - australie
+                        if canada_to_australie > 0:
+                           
+                            résultat_austoCAD = australie_canada(australie)
+                            argent_depose_c = argent_depose_c + résultat_austoCAD
+                            résultat_australie = résultat_australie - australie
+                        elif australie > résultat_australie:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                    
+
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+                        
+                        
+                        
+                        
+            elif(choix_monnaie == 6):
+                try:
+                    os.system("clear")
+                    print("Vous avez",résultat_franc,"Francs")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+                    
+                    
+                    choix_franc = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_franc)
+            
+                    if choix_franc > 2 or choix_franc < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_franc == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True    
+                    
+                if(choix_franc == 1):
+                    try:
+                        franc = float(input("Combien de Swiss Franc veut tu échanger en dollars CAD?: "))
+                        canada_to_franc = résultat_franc - franc
+                        if canada_to_franc > 0:
+                            
+                            résultat_franctoCAD = franc_canada(franc)
+                            argent_depose_c = argent_depose_c + résultat_franctoCAD
+                            résultat_franc = résultat_franc - franc
+                        elif franc > résultat_franc:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                    
+
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+# Voici la fin du code pour échanger la monnaie dans ton compte chèque                        
+#*********************************************************************
+# Voci le code pour échanger la monnaie dabs ton compte épargne
+
+
+        elif(choix_converti == 2):
+            
+            try:
+                os.system("clear")
+                print("Bonjour",nom,"vous avez choisi de faire l'échange de monnaie")
+                print (1*"\n")
+                print("Vous avez",round(argent_depose_e,2),"$ CAD")
+                print("Vous avez",round(résultat_us2,2),"$ USD")
+                print("Vous avez",round(résultat_euro2,2),"Euros")
+                print("Vous avez",round(résultat_pound2,2),"Pound Sterling")
+                print("Vous avez",round(résultat_australie2,2),"$ Australien")
+                print("Vous avez",round(résultat_franc2,2),"Francs")
+                print (1*"\n")
+                print("Que voulez vous faire aujourd'hui? : \n\n")
+                print("    1-Convertir CAD")
+                print("    2-Convertir USD")
+                print("    3-Convertir Euro")
+                print("    4-Convertir Pound Sterling")
+                print("    5-Convertir Dollar Australien")
+                print("    6-Convertir Swiss Franc")
+                print("    7-Quitter")
+                
+                
+                
+                choix_monnaie_e = int(input("Entrer votre choix: "))
+                print("Vous avez choisi le numéro: ",choix_monnaie_e)
+        
+                if choix_monnaie_e > 7 or choix_monnaie_e < 1:
+                    os.system("clear")
+                    print ("Ce choix est incompatible")
+
+            
+                if choix_monnaie_e == 7:
+                    print("Vous avez choisi de quitter, Au revoir")
+                    break
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+                
+# Ce code est d'échanger de Canada au autres pays                
+                
+                
+            if(choix_monnaie_e == 1):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("\n\n")
+                    print("    1-Convertir en USD")
+                    print("    2-Convertir en Euro")
+                    print("    3-Convertir en Pound Sterling")
+                    print("    4-Convertir en Dollar Australien")
+                    print("    5-Convertir en Swiss Franc")
+                    print("    6-Quitter")
+                    
+                    
+                    choix_CAD2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_CAD2)
+            
+                    if choix_CAD2 > 6 or choix_CAD2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_CAD2 == 6:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                
+                if(choix_CAD2 == 1):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_e = argent_depose_e - canada
+                        if argent_retire_e > 0:
+                            argent_depose_e = argent_retire_e
+                            résultat_us2 = canada_us(canada)
+                            print("Vous avez maintenant",résultat_us2,"$ USD")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+    
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+
+                        
+                elif(choix_CAD2 == 2):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_e = argent_depose_e - canada
+                        if argent_retire_e > 0:
+                            argent_depose_e = argent_retire_e
+                            résultat_euro2 = canada_euro(canada)
+                            print("Vous avez maintenant",résultat_euro2,"Euros")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                   
+    
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True   
+
+                        
+                elif(choix_CAD2 == 3):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_e = argent_depose_e - canada
+                        if argent_retire_e > 0:
+                            argent_depose_e = argent_retire_e
+                            résultat_pound2 = canada_pound(canada)
+                            print("Vous avez maintenant",résultat_pound2,"Pound Sterling")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True   
+                        
+
+                        
+                elif(choix_CAD2 == 4):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_e = argent_depose_e - canada
+                        if argent_retire_e > 0:
+                            argent_depose_e = argent_retire_e
+                            résultat_australie2 = canada_australie(canada)
+                            print("Vous avez maintenant",résultat_australie2,"Dollars Australien")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+    
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True 
+                        
+                        
+
+                        
+                elif(choix_CAD2 == 5):
+                    
+                    
+                    try:
+                    
+                        canada = float(input("Combien de dollars veut tu retirer pour l'échange? "))
+                        argent_retire_e = argent_depose_e - canada
+                        if argent_retire_e > 0:
+                            argent_depose_e = argent_retire_e
+                            résultat_franc2 = canada_franc(canada)
+                            print("Vous avez maintenant",résultat_franc2,"Francs")
+                        else:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                        print("Vos modifications ont été enregistrées")
+                        
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                       
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True  
+                        
+                        
+# Ce code est pour échanger des autres pays au Canada
+
+
+            elif(choix_monnaie_e == 2):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("Vous avez",résultat_us2,"$ USD")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+
+                    
+                    
+                    choix_USD2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_USD2)
+            
+                    if choix_USD2 > 2 or choix_USD2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_USD2 == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_USD2 == 1):
+                    try:
+                        us = float(input("Combien de dollars USD veut tu échanger en dollars CAD?: "))
+                        canada_to_US2 = résultat_us2 - us
+                        if canada_to_US2 > 0:
+                            résultat_USAtoCAD2 = us_canada(us)
+                            argent_depose_e = argent_depose_e + résultat_USAtoCAD2
+                            résultat_us2 = résultat_us2 - us
+                        elif us > résultat_us2:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                    
+                        
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                    
+                    
+                    
+                    
+                    
+            elif(choix_monnaie_e == 3):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("Vous avez",résultat_euro2,"Euros")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+
+                    
+                    
+                    choix_euro2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_euro2)
+            
+                    if choix_euro2 > 2 or choix_euro2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_euro2 == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_euro2 == 1):
+                    try:
+                        euro = float(input("Combien de euros veut tu échanger en dollars CAD?: "))
+                        canada_to_euro2 = résultat_euro2 - euro
+                        if canada_to_euro2 > 0:
+                            résultat_eurotoCAD2 = euro_canada(euro)
+                            argent_depose_e = argent_depose_e + résultat_eurotoCAD2
+                            résultat_euro2 = résultat_euro2 - euro
+                        elif euro > résultat_euro2:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                      
+                        
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+                        
+                        
+            elif(choix_monnaie_e == 4):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("Vous avez",résultat_pound2,"Pound Sterling")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+
+                    
+                    
+                    choix_pound2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_pound2)
+            
+                    if choix_pound2 > 2 or choix_pound2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_pound2 == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_pound2 == 1):
+                    try:
+                        pound = float(input("Combien de Pounds Sterling veut tu échanger en dollars CAD?: "))
+                        canada_to_pound2 = résultat_pound2 - pound
+                        if canada_to_pound2 > 0:
+                            résultat_poundtoCAD2 = pound_canada(pound)
+                            argent_depose_e = argent_depose_e + résultat_poundtoCAD2
+                            résultat_pound2 = résultat_pound2 - pound
+                        elif pound > résultat_pound2:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                     
+                        
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+                        
+            elif(choix_monnaie_e == 5):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("Vous avez",résultat_australie2,"Dollar Australien")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+
+                    
+                    
+                    choix_australie2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_australie2)
+            
+                    if choix_australie2 > 2 or choix_australie2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_australie2 == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_australie2 == 1):
+                    try:
+                        australie = float(input("Combien de Dollard Australien veut tu échanger en dollars CAD?: "))
+                        canada_to_aus2 = résultat_australie2 - australie
+                        if canada_to_aus2 > 0:
+                            résultat_austoCAD2 = australie_canada(australie)
+                            argent_depose_e = argent_depose_e + résultat_austoCAD2
+                            résultat_australie2 = résultat_australie2 - australie
+                        elif australie > résultat_australie2:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                 
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+                        
+            elif(choix_monnaie_e == 6):
+                try:
+                    os.system("clear")
+                    print("Convertire en quelle genre de monaie?")
+                    print (1*"\n")
+                    print("Vous avez",résultat_franc2,"Francs")
+                    print("\n\n")
+                    print("    1-Convertir en CAD")
+                    print("    2-Quitter")
+
+                    
+                    
+                    choix_franc2 = int(input("Entrer votre choix: "))
+                    print("Vous avez choisi le numéro: ",choix_franc2)
+            
+                    if choix_franc2 > 2 or choix_franc2 < 1:
+                        print ("Ce choix est incompatible")
+        
+                
+                    if choix_franc2 == 2:
+                        print("Vous avez choisi de quitter, Au revoir")
+                        break
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+                if(choix_franc2 == 1):
+                    try:
+                        franc = float(input("Combien de Francs veut tu échanger en dollars CAD?: "))
+                        canada_to_franc2 = résultat_franc2 - franc
+                        if canada_to_franc2 > 0:
+                            résultat_franctoCAD2 = franc_canada(franc)
+                            argent_depose_e = argent_depose_e + résultat_franctoCAD2
+                            résultat_franc2 = résultat_franc2 - franc
+                        elif franc > résultat_franc2:
+                            print("Impossible de retirer une somme plus grand que ton balance")
+                      
+                        
+                        print("Vos modifications ont été enregistrées")
+                        again = input("Voudrais-tu recommencer? o/n")
+                        if again == "o":
+                            os.system("clear")
+                            True
+                        if again == "n":
+                            print ("Au revoir, bonne journée")
+                            break
+                        
+                        
+                    except:
+                        ValueError
+                        os.system("clear")
+                        print("Erreur, entrez seulement des nombres entiers")
+                        True
+                        
+# Voici la fin du code pour l'échange de momnaie                        
+#******************************************************************
+# Voici le code pour transferer l'argent 
+
+
+    elif(choix_banque == 4):
+        try:
+            os.system("clear")
+            print("Vous avez choisi de transferer de l'argent")
+            print (1*"\n")
+            print("Vous avez: ",argent_depose_c,"$ dans votre compte chèque")
+            print("Vous avez: ",argent_depose_e,"$ dans votre compte épargne")
+            print("Que voulez vous faire aujourd'hui? : \n\n")
+            print("    1-Transferer de chèque à épargne")
+            print("    2-Transferer de épargne à chèque")
+            print("    3-Quitter")
+            
+            choix_transfere = int(input("Entrer votre choix: "))
+            print("Vous avez choisi le numéro: ",choix_transfere)
+    
+            if choix_transfere > 3 or choix_transfere < 1:
+                os.system("clear")
+                print ("Ce choix est incompatible")
+    
+        
+            if choix_transfere == 3:
+                print("Vous avez choisi de quitter, Au revoir")
+                break
+        except:
+            ValueError
+            print("Erreur, entrez seulement des nombres entiers")
+            True
+            
+# De chèque à épargne
+            
+            
+        if(choix_transfere == 1):
+            try:
+                os.system("clear")
+                print (1*"\n")
+                print("    1-Transferer en intérêt simple")
+                print("    2-Transferer en intérêt composé")
+                print("    3-Quitter")
+                
+                
+                choix_e_simple = int(input("Entrer votre choix: "))
+                print("Vous avez choisi le numéro: ",choix_e_simple)
+        
+                if choix_e_simple > 3 or choix_e_simple < 1:
+                    os.system("clear")
+                    print ("Ce choix est incompatible")
+        
+            
+                if choix_e_simple == 3:
+                    print("Vous avez choisi de quitter, Au revoir")
+                    break
+            except:
+                ValueError
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+                
+                
+            if(choix_e_simple == 1):
+                try:
+                    
+                   
+                    c_a_e = float(input("Combien d'argent voulez vous transferer?: "))
+                    chèque_épargne_s = argent_depose_c - c_a_e
+                    if chèque_épargne_s > 0:
+                        finale_é_s = (c_a_e) * (i) + (c_a_e)
+                        argent_depose_e = argent_depose_e + finale_é_s
+                        argent_depose_c = chèque_épargne_s
+                    elif c_a_e > argent_depose_c:
+                        print("Impossible de transérer une somme plus grand que ton balance")
+                   
+                    print("Vos modifications ont été enregistrées")
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                    
+                    
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True
+                    
+                    
+            elif(choix_e_simple == 2):
+                try:
+                    
+                    année_c = int(input("Combien d'années veut tu investir?: "))
+                    c_a_e_c = float(input("Combien d'argent voulez vous transferer?: "))
+                    chèque_épargne_c = argent_depose_c - c_a_e_c
+                    if chèque_épargne_c > 0:
+                        finale_é_c = ((1 + i) ** année_c) * c_a_e_c
+                        argent_depose_e = argent_depose_e + finale_é_c
+                        argent_depose_c = chèque_épargne_c
+                    elif c_a_e_c > argent_depose_c:
+                        print("Impossible de transérer une somme plus grand que ton balance")
+                   
+                    print("Vos modifications ont été enregistrées")
+                    again = input("Voudrais-tu recommencer? o/n")
+                    if again == "o":
+                        os.system("clear")
+                        True
+                    if again == "n":
+                        print ("Au revoir, bonne journée")
+                        break
+                    
+                    
+                except:
+                    ValueError
+                    os.system("clear")
+                    print("Erreur, entrez seulement des nombres entiers")
+                    True        
+                    
+                    
+        elif(choix_transfere == 2):
+            try:
+                os.system("clear")
+                e_a_c = float(input("Combien d'argent voulez vous transferer?: "))
+                épargne_cheque = argent_depose_e - e_a_c
+                if épargne_cheque > 0:
+                    argent_depose_c = argent_depose_c + e_a_c
+                    argent_depose_e = épargne_cheque
+                    
+                    
+                elif e_a_c > argent_depose_e:
+                    print("Impossible de transérer une somme plus grand que ton balance")
+                    
+                    
+                    
+                print("Vos modifications ont été enregistrées")
+                again = input("Voudrais-tu recommencer? o/n")
+                if again == "o":
+                    os.system("clear")
+                    True
+                if again == "n":
+                    print ("Au revoir, bonne journée")
+                    break
+                    
+                    
+            except:
+                ValueError
+                os.system("clear")
+                print("Erreur, entrez seulement des nombres entiers")
+                True
+                
+
+# Voici la fin du code pour transferer l'argent
+#****************************************************************************************************
+# Voici la fin du programme
